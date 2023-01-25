@@ -1,0 +1,70 @@
+.card-doctor .header .meta1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 100px;
+    visibility: hidden;
+    opacity: 0;
+    transition: all .2s ease;
+    display: flex;
+}
+
+.card-doctor:hover .header .meta1 {
+    bottom: 15px;
+    visibility: visible;
+    opacity: 1;
+}
+
+.card-doctor .header .meta1 a{
+    color: rgb(255, 254, 254);
+    background-color: rgba(95, 96, 97, 0.507);
+    display: flex;
+    justify-content: center;
+    border-radius: 32px;
+} 
+.card-doctor .header .meta1 a:hover{
+    text-decoration: none;
+}
+
+.alert button.btn-close {
+    font-size: 2rem;
+    position: absolute;
+    right: 15px;
+    top: 0;
+}
+
+.table-appointment thead{
+    background-color: #2d3b38d1;
+    color: #00D9A5;
+}
+
+.table-appointment thead th{
+    font-weight: 100;
+}
+
+.table-appointment td ,.table-appointment th{
+    text-align: center;
+    padding: 26px 0!important;
+}
+
+.table-appointment tbody{
+    background-color: #cbc9c95c;
+    color: #005742;
+}
+
+.table-appointment tbody tr{
+    transition:background-color .3s;
+}
+
+.table-appointment td .rot{
+    transform: rotate(223deg);
+    position: relative;
+    transition: left .5s;
+    left: 0;
+}
+
+.table-appointment td .rot:hover{
+    left: 5px;
+}
