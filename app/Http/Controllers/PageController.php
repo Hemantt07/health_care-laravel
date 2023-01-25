@@ -9,33 +9,41 @@ use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
-    function about(){
+    // about
+    public function about(){
         $doctors = doctors::all();
         return view( 'user.about', compact( 'doctors' ) );
     }
 
-    function doctors(){
+    // doctors
+    public function doctors(){
         $doctors = doctors::all();
         return view( 'user.doctors', compact( 'doctors' ) );
     }
 
-    function myAppointments(){
+    // myAppointments
+    public function myAppointments(){
 
         if( Auth::id() ){
 
             $userID = Auth::user()->id;
 
-            $doctors = doctors::all();
-
             $appointments = appointments::where( 'userId', $userID )->get();            
 
-            return view( 'user.my-appointments', compact( 'appointments','doctors' ) );
+            return view( 'user.my-appointments', compact( 'appointments' ) );
 
         }
         else{
             return redirect()->back();
         }
 
+    }
 
+    // appointment
+    public function appointment( $appointment_id )
+    {
+        $appointment = appointments::where( 'id', $appointment_id )->get();
+
+        return view( 'user.appointment', compact( 'appointment' ) );
     }
 }

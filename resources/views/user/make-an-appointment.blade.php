@@ -39,7 +39,7 @@
 
               @foreach( $doctors as $doctor )
 
-              <option value="{{ $doctor->id }} ">{{ $doctor->name }} ({{ $doctor->speciality }})</option>
+              <option value="{{ $doctor->name }} ">{{ $doctor->name }} ({{ $doctor->speciality }})</option>
 
               @endforeach
         

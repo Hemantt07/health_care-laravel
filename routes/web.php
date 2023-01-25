@@ -41,3 +41,6 @@ Route::get( '/about', [ PageController::class, 'about' ] )->name('about-page');
 Route::get('/make-appointment', [HomeController::class,'make_appointment'])->name('make-appointment');
 Route::get( '/doctors', [ PageController::class, 'doctors' ] )->name('doctors');
 Route::get( '/my-appointments', [ PageController::class, 'myAppointments' ] )->name('my-appointments');
+Route::get( '/appointment/{appointment_id}', [ PageController::class, 'appointment' ] )->name('appointment');
+
+Route::get( 'cancel/{appointment_id}',[ HomeController::class, 'cancelAppointment' ] )->name('cancel-appointment');

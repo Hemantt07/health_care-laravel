@@ -46,7 +46,7 @@
 
 .table-appointment td ,.table-appointment th{
     text-align: center;
-    padding: 26px 0!important;
+    align-items: center;
 }
 
 .table-appointment tbody{
@@ -67,4 +67,24 @@
 
 .table-appointment td .rot:hover{
     left: 5px;
+}
+
+div.appointment h5{
+
+    color: #00D9A5;
+    font-size: 20px;
+}
+
+div.appointment {
+    background-color: #cbc9c95c;
+    border-radius: 10px;
+    box-shadow: 0px 0px 8px 0px grey;
+}       
+
+a.back{
+    background-image: url('../assets/img/exit.png');
+}
+
+table.table.table-appointment {
+    box-shadow: 0px 0px 8px 0px grey;
 }

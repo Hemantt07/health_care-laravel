@@ -6,10 +6,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Model\User;
 use App\Models\Doctors;
+use App\Models\Appointments;
 
 class HomeController extends Controller
 {
-    function redirect()
+    public function redirect()
     {
         if( Auth::id() )
         {
@@ -30,18 +31,25 @@ class HomeController extends Controller
 
     }
 
-    function index()
+    public function index()
     {
         $doctors = doctors::all();
         return view('user.home', compact( 'doctors' ));
          
     }
 
-    function make_appointment(){
+    public function make_appointment(){
 
         $doctors = doctors::all();
         return view( 'user.make-an-appointment', compact( 'doctors' ) );
         
     }
+
+    public function cancelAppointment( $appointment_id ){
+        $appointment = appointments::find( $appointment_id );
+        $appointment->delete();
+
+        return redirect( route('my-appointments') )->with( 'message', 'Appointment cancelled successfully..!' );
+    } 
 
 }
