@@ -1,14 +1,11 @@
 @extends('layouts.app')
-@section('title', '| My appointments')
+@section('title', '| Admin')
 @section('content')
 
-    <!-- partials -->
-  @include('partials.topbar')
+@include('admin.navbar')
 
-  @include('partials.navbar')
-
-  <div class="container mt-5">
-    <h1 class="text-center wow fadeInUp">My Appointments</h1>
+<div class="container mt-5">
+    <h1 class="text-center wow fadeInUp">Appointments</h1>
     <div class="row">
         @if(session()->has('message'))
           <div class="mt-5 col-12 alert alert-danger text-danger alert-dismissible" role="alert">
@@ -28,11 +25,13 @@
             @else
             <thead>
                 <th>Serial No.</th>
+                <th>Customer</th>
                 <th>Doctor Name</th>
                 <th>Date</th>
                 <th>Status</th>
                 <th>View</th>
-                <th>Cancel Appointment</th>
+                <th>Approve</th>
+                <th>Cancel</th>
             </thead>
 
             <tbody>
@@ -40,12 +39,18 @@
                 @foreach( $appointments as $appointment )
                 <tr>
                     <td class="col-1">{{ $sNo }}</td>
+                    <td class="col-1">{{ $sNo }}</td>
                     <td class="col-1">{{ $appointment->doctorId }}</td>
                     <td class="col-1">{{ $appointment->date }}</td>
-                    <td class="col-2 text-info">{{ $appointment->status }}</td>
+                    <td class="col-1 text-info">{{ $appointment->status }}</td>
                     <td class="col-1">
                         <a href="{{ url('appointment', ['appointment_id' => $appointment->id] ) }}">
                             <img src="../assets/img/arrow.png" alt="" class="d-block mx-auto rot">
+                        </a>
+                    </td>
+                    <td class="col-1">
+                        <a href="{{ url('appointment', ['appointment_id' => $appointment->id] ) }}">
+                            <img src="../assets/img/approve.png" alt="" class="d-block mx-auto hov">
                         </a>
                     </td>
                     <td class="col-1">
@@ -63,6 +68,6 @@
     </div>
   </div>
 
-  @include('partials.footer')  
+@include('admin.footer')
 
 @endsection

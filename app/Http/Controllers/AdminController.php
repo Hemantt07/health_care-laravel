@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
-    function add_view()
+    public function add_view()
     {
         return view('admin.add-doctors');
     }
 
-    function store_doctors(Request $req)
+    public function store_doctors(Request $req)
     {
         $doctor = New doctors;
 
@@ -39,7 +39,7 @@ class AdminController extends Controller
         return redirect()->back()->with('message', 'Doctor added successfully');
     }
 
-    function appointments( Request $request ){
+    public function appointments( Request $request ){
 
         $appointments = New Appointments;
 
@@ -60,5 +60,10 @@ class AdminController extends Controller
             return redirect()->back()->with( 'message', 'Please login to make an appointment' );
         }
 
+    }
+
+    public function showAppointments(){
+        $appointments = appointments::all();
+        return view( 'admin.appointments', compact( 'appointments' ) );
     }
 }
