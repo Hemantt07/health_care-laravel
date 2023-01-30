@@ -1,13 +1,10 @@
 @extends('layouts.app')
-@section('title', '| Appointment')
+@section('title', '| Admin')
 @section('content')
 
-    <!-- partials -->
-  
+@include('admin.navbar')
 
-  @include('partials.navbar')
-
-    <div class="container mt-5">
+    <div class="container my-5 pb-5">
         <h1 class="text-center wow fadeInUp">Appointment<p style="font-size:25px" class="@if($appointment->first()->status == 'Approved') text-success @elseif($appointment->first()->status == 'Cancelled') text-danger @else text-primary @endif">( {{$appointment->first()->status}} )</p></h1>
         <div class="appointment p-5 my-5">
             <div class="row mb-3">
@@ -27,12 +24,15 @@
                 <div class="col-8">{{$appointment->first()->created_at}}</div>
             </div>
             <div class="row mt-5">
-                <a href="{{ route('cancel-appointment', ['appointment_id' => $appointment->first()->id] ) }}" class="d-block mx-auto btn btn-primary mt-3 wow zoomIn">Cancel appointment</a>
-                <a class="d-block mx-auto btn btn-primary mt-3 wow zoomIn" href="{{ route('my-appointments') }}">Go Back</a>
+                @if ( $appointment->first()->status == 'In Progress' )
+                    <a href="{{ route('cancel-appointment', ['appointment_id' => $appointment->first()->id] ) }}" class="d-block mx-auto btn btn-primary mt-3 wow zoomIn">Approve appointment</a>
+                    <a href="{{ route('cancel-appointment', ['appointment_id' => $appointment->first()->id] ) }}" class="d-block mx-auto btn btn-primary mt-3 wow zoomIn">Cancel appointment</a>
+                @endif
+                    <a class="d-block mx-auto btn btn-primary mt-3 wow zoomIn" href="{{ route('my-appointments') }}">Go Back</a>
             </div>
         </div>
     </div>
 
-  @include('partials.footer')  
+    @include('admin.footer')
 
 @endsection

@@ -34,7 +34,21 @@ class HomeController extends Controller
     public function index()
     {
         $doctors = doctors::all();
-        return view('user.home', compact( 'doctors' ));
+        if( Auth::id() )
+        {
+            if ( Auth::user()->usertype == 0 )
+            {  
+                return view('user.home', compact( 'doctors' ));
+            }
+            else 
+            {
+                return view('admin.home', compact( 'doctors' ));
+            }
+        }
+        else{
+            return view('user.home', compact( 'doctors' ));
+        }
+        
          
     }
 
@@ -46,10 +60,23 @@ class HomeController extends Controller
     }
 
     public function cancelAppointment( $appointment_id ){
-        $appointment = appointments::find( $appointment_id );
-        $appointment->delete();
 
-        return redirect( route('my-appointments') )->with( 'message', 'Appointment cancelled successfully..!' );
+        $appointment = appointments::find( $appointment_id );
+
+        if ( Auth::user()->usertype == 0 )
+        {  
+            $appointment->delete();
+            return redirect( route('my-appointments') )->with( 'message', 'Appointment cancelled successfully..!' );
+        }
+        else 
+        {
+            $appointment->status = "Cancelled";
+
+            $appointment->save();
+            
+            return redirect( route('my-appointments') )->with( 'message', 'Appointment cancelled successfully..!' );
+        }
+
     } 
 
 }

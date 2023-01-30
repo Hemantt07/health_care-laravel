@@ -2,7 +2,7 @@
 @section('title', '| Login')
 @section('content')
 
-  @include('partials.topbar')
+  
   @include('partials.navbar')
   
 <div class="m-5 d-flex justify-center">

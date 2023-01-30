@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Doctors;
 use App\Models\Appointments;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -62,8 +63,63 @@ class AdminController extends Controller
 
     }
 
-    public function showAppointments(){
-        $appointments = appointments::all();
-        return view( 'admin.appointments', compact( 'appointments' ) );
+    public function approveAppointment( $id ){
+        
+        $data = appointments::find( $id );
+        $data->status = 'Approved';
+
+        $data->save();
+
+        return redirect()->back();
+
+    }
+
+    public function showDoctor( $id )
+    {
+        $doctors = doctors::find( $id );
+
+        return view( 'admin.doctor', compact( 'doctors' ) );
+    }
+
+    public function deleteDoctor( $id )
+    {
+        $doctor = doctors::find( $id );
+
+        $doctor->delete();
+
+        return redirect( 'doctors' )->with( 'message', 'Doctor details has been deleted' );
+    }
+
+    public function editDoctorForm( $id ){
+        $doctor = doctors::find( $id );
+        return view( 'admin.editDoctor' , compact( 'doctor' ) );
+    }
+
+    public function editDoctor( Request $req , $id )
+    {
+        $doctor = doctors::find( $id );
+
+        $image = $req->file;
+
+        if ( $image )
+        {
+            $imagename = $req->name . date("h-i-d-M-Y-").'.'. $image->getClientOriginalExtension();
+
+            $req->file->move('doctorsimages', $imagename);
+
+            $doctor->image = $imagename;
+        }
+
+        $doctor->name = $req->name;
+
+        $doctor->phone = $req->phone;
+
+        $doctor->room = $req->room;
+
+        $doctor->speciality = $req->speciality;
+
+        $doctor->save();
+
+        return redirect()->back()->with('message', 'Doctor details edited successfully');
     }
 }

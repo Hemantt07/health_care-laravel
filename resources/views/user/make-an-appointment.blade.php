@@ -2,7 +2,7 @@
 @section('title', '| Make an appointment')
 @section('content')
 
-  @include('partials.topbar')
+  
   @include('partials.navbar')
 
   <div class="page-section">

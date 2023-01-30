@@ -3,7 +3,7 @@
 @section('content')
 
     <!-- partials -->
-  @include('partials.topbar')
+  
 
   @include('partials.navbar')
 
@@ -42,7 +42,9 @@
                     <td class="col-1">{{ $sNo }}</td>
                     <td class="col-1">{{ $appointment->doctorId }}</td>
                     <td class="col-1">{{ $appointment->date }}</td>
-                    <td class="col-2 text-info">{{ $appointment->status }}</td>
+                    <td class="col-2 @if($appointment->status == 'Approved') text-success @elseif($appointment->status == 'Cancelled') text-danger @else text-primary @endif">
+                        <b>{{ $appointment->status }}</b>
+                    </td>
                     <td class="col-1">
                         <a href="{{ url('appointment', ['appointment_id' => $appointment->id] ) }}">
                             <img src="../assets/img/arrow.png" alt="" class="d-block mx-auto rot">

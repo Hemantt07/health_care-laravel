@@ -11,14 +11,33 @@ class PageController extends Controller
 {
     // about
     public function about(){
+
         $doctors = doctors::all();
         return view( 'user.about', compact( 'doctors' ) );
+        
     }
 
     // doctors
     public function doctors(){
         $doctors = doctors::all();
-        return view( 'user.doctors', compact( 'doctors' ) );
+
+        if( Auth::id() ){
+
+            if ( Auth::user()->usertype == 0 )
+            {  
+                return view( 'user.doctors', compact( 'doctors' ) );
+            }
+            else
+            {
+                return view( 'admin.doctors', compact( 'doctors' ) );
+            }
+        }
+        else
+        {
+            return view( 'user.doctors', compact( 'doctors' ) );
+        }
+
+
     }
 
     // myAppointments
@@ -26,11 +45,21 @@ class PageController extends Controller
 
         if( Auth::id() ){
 
-            $userID = Auth::user()->id;
+            if ( Auth::user()->usertype == 0 )
+            {  
+                $userID = Auth::user()->id;
 
-            $appointments = appointments::where( 'userId', $userID )->get();            
+                $appointments = appointments::where( 'userId', $userID )->get();            
+    
+                return view( 'user.my-appointments', compact( 'appointments' ) );
+            }
+            else
+            {
+                $appointments = appointments::all();
 
-            return view( 'user.my-appointments', compact( 'appointments' ) );
+                return view( 'admin.appointments', compact( 'appointments' ) );
+            }
+
 
         }
         else{
@@ -42,8 +71,21 @@ class PageController extends Controller
     // appointment
     public function appointment( $appointment_id )
     {
-        $appointment = appointments::where( 'id', $appointment_id )->get();
 
-        return view( 'user.appointment', compact( 'appointment' ) );
+        if( Auth::id() )
+        {
+            if ( Auth::user()->usertype == 0 )
+            {  
+                $appointment = appointments::where( 'id', $appointment_id )->get();
+
+                return view( 'user.appointment', compact( 'appointment' ) );
+            }
+            else
+            {
+                $appointment = appointments::where( 'id', $appointment_id )->get();
+
+                return view( 'admin.appointment', compact( 'appointment' ) );
+            }
+        }
     }
 }

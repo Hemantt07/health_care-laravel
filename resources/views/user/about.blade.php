@@ -4,7 +4,7 @@
 @section('content')
 
   <!-- partials -->
-  @include('partials.topbar')
+  
   
   @include('partials.navbar')
 

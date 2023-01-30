@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,13 +17,11 @@ use App\Http\Controllers\PageController;
 |
 */
 
+// User
+
 Route::get('/', [HomeController::class,'index']);
 
 Route::get('/home', [HomeController::class,'redirect']);
-
-Route::get('/add_doctors', [AdminController::class,'add_view'])->name('add-view');
-
-Route::post('/add_doctors_form', [AdminController::class,'store_doctors'])->name('add-doctors-form');
 
 Route::post('/appointments', [AdminController::class,'appointments'])->name('appointments');
 
@@ -35,8 +34,7 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-
-
+  
 Route::get( '/about', [ PageController::class, 'about' ] )->name('about-page');
 
 Route::get('/make-appointment', [HomeController::class,'make_appointment'])->name('make-appointment');
@@ -49,4 +47,18 @@ Route::get( '/appointment/{appointment_id}', [ PageController::class, 'appointme
 
 Route::get( 'cancel/{appointment_id}',[ HomeController::class, 'cancelAppointment' ] )->name('cancel-appointment');
 
-Route::get( 'appointments',[ AdminController::class, 'showAppointments' ] )->name('showAppointments');
+// Admin 
+
+Route::get('admin/add_doctors', [AdminController::class,'add_view'])->name('add-view');
+
+Route::post('admin/add_doctors_form', [AdminController::class,'store_doctors'])->name('add-doctors-form');
+
+Route::get( 'admin/doctor/{doctor_id}', [ AdminController::class, 'showDoctor' ] )->name('showdoctor');
+
+Route::get( 'approve/{appointment_id}',[ AdminController::class, 'approveAppointment' ] )->name('approve-appointment');
+
+Route::get( 'admin/edit-doctor-form/{doctor_id}',[ AdminController::class, 'editDoctorForm' ] )->name('edit-doctor');
+
+Route::get( 'delete/{doctor_id}',[ AdminController::class, 'deleteDoctor' ] )->name('delete-doctor');
+
+Route::post('edit_doctors/{doctor_id}', [AdminController::class,'editDoctor'])->name('edit-doctors-form');

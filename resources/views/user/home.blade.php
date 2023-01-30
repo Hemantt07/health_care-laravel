@@ -2,7 +2,7 @@
 @section('title', '| Home')
 @section('content')
 
-  @include('partials.topbar')
+  
   @include('partials.navbar')
 
  <div class="page-hero bg-image overlay-dark" style="background-image: url(../assets/img/bg_image_1.jpg);"> 
