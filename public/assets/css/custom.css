@@ -133,3 +133,56 @@ form label.upload-photo {
     border-radius: 14px;
     color: white;
 }
+
+.fc-toolbar h2 {
+    color: #00D9A5;
+}
+
+.fc-icon-left-single-arrow:after {
+    content: "\2039";
+    font-size: 110%!important;
+    top: -7%;
+}
+
+.fc-icon-right-single-arrow:after {
+    content: "\203A";
+    font-size: 110%!important;
+    top: -7%;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fc .fc-button {
+    user-select: none;
+    border: 1px solid #00D9A5;
+    padding: 0 .5rem!important; 
+    font-size: 1em;
+    line-height: 1.5;
+    border-radius: 0.25em;
+}
+
+th.fc-day-header {
+    padding: 10px!important;
+    background-color: lightgrey;
+
+}
+
+.fc-row.fc-week.fc-widget-content {
+    height: 100px!important;
+}
+
+.fc-scroller.fc-day-grid-container {
+    height: auto!important;
+}
+
+.fc-unthemed td.fc-today {
+    background: #69f1d1!important;
+}
+
+.fc-clear {
+    clear: both;
+    display: none!important;
+}

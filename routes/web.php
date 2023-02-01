@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\FullCalendarController;
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -43,22 +44,32 @@ Route::get( '/doctors', [ PageController::class, 'doctors' ] )->name('doctors');
 
 Route::get( '/my-appointments', [ PageController::class, 'myAppointments' ] )->name('my-appointments');
 
+Route::get( '/hospitals', [ PageController::class, 'findHospitals' ] )->name('find-hospitals');
+
 Route::get( '/appointment/{appointment_id}', [ PageController::class, 'appointment' ] )->name('appointment');
 
 Route::get( 'cancel/{appointment_id}',[ HomeController::class, 'cancelAppointment' ] )->name('cancel-appointment');
 
-// Admin 
+Route::post( '/my-appointments/action',[ FullCalendarController::class, 'action' ] );
 
-Route::get('admin/add_doctors', [AdminController::class,'add_view'])->name('add-view');
+// Admin routes
 
-Route::post('admin/add_doctors_form', [AdminController::class,'store_doctors'])->name('add-doctors-form');
+if( Auth::id() )
+    {
+        if ( Auth::user()->usertype == 1 )
+        {  
+            Route::get('admin/add_doctors', [AdminController::class,'add_view'])->name('add-view');
 
-Route::get( 'admin/doctor/{doctor_id}', [ AdminController::class, 'showDoctor' ] )->name('showdoctor');
+            Route::post('admin/add_doctors_form', [AdminController::class,'store_doctors'])->name('add-doctors-form');
 
-Route::get( 'approve/{appointment_id}',[ AdminController::class, 'approveAppointment' ] )->name('approve-appointment');
+            Route::get( 'admin/doctor/{doctor_id}', [ AdminController::class, 'showDoctor' ] )->name('showdoctor');
 
-Route::get( 'admin/edit-doctor-form/{doctor_id}',[ AdminController::class, 'editDoctorForm' ] )->name('edit-doctor');
+            Route::get( 'approve/{appointment_id}',[ AdminController::class, 'approveAppointment' ] )->name('approve-appointment');
 
-Route::get( 'delete/{doctor_id}',[ AdminController::class, 'deleteDoctor' ] )->name('delete-doctor');
+            Route::get( 'admin/edit-doctor-form/{doctor_id}',[ AdminController::class, 'editDoctorForm' ] )->name('edit-doctor');
 
-Route::post('edit_doctors/{doctor_id}', [AdminController::class,'editDoctor'])->name('edit-doctors-form');
+            Route::get( 'delete/{doctor_id}',[ AdminController::class, 'deleteDoctor' ] )->name('delete-doctor');
+
+            Route::post('edit_doctors/{doctor_id}', [AdminController::class,'editDoctor'])->name('edit-doctors-form');
+        }
+    }

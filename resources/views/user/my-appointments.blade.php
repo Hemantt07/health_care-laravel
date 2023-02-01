@@ -62,9 +62,67 @@
             @endif
         </table>
 
+        <div class="calendar mb-5">
+            <h1 class="text-center text-primary"></h1>
+            <div id="calendar"></div>
+        </div>
+
     </div>
   </div>
 
   @include('partials.footer')  
+
+     
+<script>
+
+$(document).ready(function () {
+
+    $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    var calendar = $('#calendar').fullCalendar({
+        editable: true,
+        header:{
+            left:'prev, next today',
+            right:'title',
+            center:'month, agendaWeek, agendaDay'
+        },
+        events:'/my-appointments',
+        selectable:true,
+        selectHelper:true,
+        select:function( start, end, allday )
+        {
+            var title = prompt( 'Event title :' );
+
+            if ( title ) {
+                var start = $.fullCalendar.formatDate( 'start', 'Y-MM-DD HH:mm:ss' );
+
+                var end = $.fullCalendar.formatDate( 'end', 'Y-MM-DD HH:mm:ss' );
+
+                $.ajax({
+                    url:'/my-appointments/action',
+                    type:'POST',
+                    data:{
+                        title: title,
+                        start: start,
+                        end: end,
+                        type:'add'
+                    },
+                    success:function( data ){
+                        calendar.fullCalendar( 'refetchEvents' );
+                        alert( 'Event Created Successfully' );
+                    }
+
+                });
+
+            }
+        }
+    });
+});
+
+</script>
 
 @endsection

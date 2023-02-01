@@ -53,9 +53,18 @@ class HomeController extends Controller
     }
 
     public function make_appointment(){
-
         $doctors = doctors::all();
-        return view( 'user.make-an-appointment', compact( 'doctors' ) );
+        if( Auth::id() )
+        {
+            if ( Auth::user()->usertype == 0 )
+            { 
+                return view( 'user.make-an-appointment', compact( 'doctors' ) );
+            }
+        }
+        else 
+        {
+            return view( 'user.make-an-appointment', compact( 'doctors' ) );
+        }
         
     }
 

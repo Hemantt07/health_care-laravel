@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Doctors;
 use App\Models\Appointments;
+use App\Models\Events;
 use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
@@ -41,12 +42,19 @@ class PageController extends Controller
     }
 
     // myAppointments
-    public function myAppointments(){
+    public function myAppointments(Request $req){
 
         if( Auth::id() ){
 
             if ( Auth::user()->usertype == 0 )
             {  
+                if ( $req->ajax() ) {
+
+                    $data = events::whereDate( 'start', '>=', $req->start )
+                                    ->whereDate( 'end', '<=', $req->end )
+                                    ->get([ 'id', 'title', 'start', 'end' ]);
+                    return response()->json($data);
+                }
                 $userID = Auth::user()->id;
 
                 $appointments = appointments::where( 'userId', $userID )->get();            
@@ -56,7 +64,6 @@ class PageController extends Controller
             else
             {
                 $appointments = appointments::all();
-
                 return view( 'admin.appointments', compact( 'appointments' ) );
             }
 
@@ -71,7 +78,6 @@ class PageController extends Controller
     // appointment
     public function appointment( $appointment_id )
     {
-
         if( Auth::id() )
         {
             if ( Auth::user()->usertype == 0 )
@@ -86,6 +92,21 @@ class PageController extends Controller
 
                 return view( 'admin.appointment', compact( 'appointment' ) );
             }
+        }
+    }
+
+    public function findHospitals()
+    {
+        if( Auth::id() )
+        {
+            if ( Auth::user()->usertype == 0 )
+            {  
+                return view( 'user.hospitals' );
+            }
+        }
+        else 
+        {
+            return view( 'user.hospitals' );
         }
     }
 }

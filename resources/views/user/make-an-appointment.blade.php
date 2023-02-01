@@ -30,7 +30,7 @@
           </div>
 
           <div class="col-12 col-sm-6 py-2 wow fadeInLeft" data-wow-delay="300ms">
-            <input type="date" class="form-control" name="date" required>
+            <input type="date" class="form-control" name="date" min="<?= date('Y-m-d') ?>" required>
           </div>
 
           <div class="col-12 col-sm-6 py-2 wow fadeInRight" data-wow-delay="300ms">
