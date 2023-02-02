@@ -1,5 +1,5 @@
 *::selection {
-    background-color: #36fddc;
+    background-color: #f8a1dbfa;
     color: #000000;
 }
 
@@ -185,4 +185,18 @@ th.fc-day-header {
 .fc-clear {
     clear: both;
     display: none!important;
+}
+
+tr:first-child > td > .fc-day-grid-event {
+    margin-top: 2px;
+    background-color: #3ecbaa!important;
+    border: none;
+}
+.fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
+    text-align: center;
+    color: #005742;
+}
+
+.modal-dialog-centered{
+    display: none;
 }

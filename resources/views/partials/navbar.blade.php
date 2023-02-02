@@ -16,8 +16,8 @@
             <li class="nav-item @if(Request::url() === url('').'/doctors' ) active @endif">
               <a class="nav-link" href="{{ route('doctors') }}">Doctors</a>
             </li>
-            <li class="nav-item @if(Request::url() === url('').'/hospitals' ) active @endif">
-              <a class="nav-link" href="{{ route('find-hospitals') }}">Find Hospitals</a>
+            <li class="nav-item @if(Request::url() === url('').'/calender' ) active @endif">
+              <a class="nav-link" href="#">Find Hospitals</a>
             </li>
             <li class="nav-item @if(Request::url() === url('').'/make-appointment' ) active @endif">
               <a class="nav-link" href="{{ route('make-appointment') }}">Make an appointment</a>

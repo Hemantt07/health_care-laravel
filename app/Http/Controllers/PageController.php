@@ -48,14 +48,16 @@ class PageController extends Controller
 
             if ( Auth::user()->usertype == 0 )
             {  
+                $userID = Auth::user()->id;
                 if ( $req->ajax() ) {
 
                     $data = events::whereDate( 'start', '>=', $req->start )
                                     ->whereDate( 'end', '<=', $req->end )
+                                    ->where( 'userID', $userID )
                                     ->get([ 'id', 'title', 'start', 'end' ]);
                     return response()->json($data);
                 }
-                $userID = Auth::user()->id;
+                
 
                 $appointments = appointments::where( 'userId', $userID )->get();            
     
@@ -63,6 +65,13 @@ class PageController extends Controller
             }
             else
             {
+                if ( $req->ajax() ) {
+
+                    $data = events::whereDate( 'start', '>=', $req->start )
+                                    ->whereDate( 'end', '<=', $req->end )
+                                    ->get([ 'id', 'title', 'start', 'end' ]);
+                    return response()->json($data);
+                }
                 $appointments = appointments::all();
                 return view( 'admin.appointments', compact( 'appointments' ) );
             }

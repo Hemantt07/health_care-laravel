@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Doctors;
 use App\Models\Appointments;
+use App\Models\Events;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,21 @@ class AdminController extends Controller
 {
     public function add_view()
     {
-        return view('admin.add-doctors');
+        if( Auth::id() )
+        {
+            if ( Auth::user()->usertype == 1 )
+            {  
+                return view('admin.add-doctors');
+            }
+            else
+            {
+                abort(404);
+            }
+        }
+        else
+        {
+            return redirect()->back();
+        }
     }
 
     public function store_doctors(Request $req)
@@ -44,7 +59,17 @@ class AdminController extends Controller
 
         $appointments = New Appointments;
 
+        $events = new Events;
+
         if ( Auth::id() ){
+ 
+            $events->title = $request->name .' | '.$request->message;
+            $events->start = $request->date;
+            $events->end = $request->date;
+            $events->userId = Auth::user()->id;
+
+            $events->save();
+
             $appointments->userId = Auth::user()->id;            
             $appointments->name = $request->name;
             $appointments->email = $request->email;
@@ -76,7 +101,19 @@ class AdminController extends Controller
 
     public function showDoctor( $id )
     {
-        $doctors = doctors::find( $id );
+        if( Auth::id() )
+        {
+            if ( Auth::user()->usertype == 1 )
+            {  
+                $doctors = doctors::find( $id );
+            }
+            else
+            {
+                abort(404);
+            }
+        } else {
+            return redirect()->back();
+        }
 
         return view( 'admin.doctor', compact( 'doctors' ) );
     }

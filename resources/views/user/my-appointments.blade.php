@@ -71,58 +71,20 @@
   </div>
 
   @include('partials.footer')  
-
-     
-<script>
-
-$(document).ready(function () {
-
-    $.ajaxSetup({
-        headers:{
-            'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-
-    var calendar = $('#calendar').fullCalendar({
-        editable: true,
-        header:{
-            left:'prev, next today',
-            right:'title',
-            center:'month, agendaWeek, agendaDay'
-        },
-        events:'/my-appointments',
-        selectable:true,
-        selectHelper:true,
-        select:function( start, end, allday )
-        {
-            var title = prompt( 'Event title :' );
-
-            if ( title ) {
-                var start = $.fullCalendar.formatDate( 'start', 'Y-MM-DD HH:mm:ss' );
-
-                var end = $.fullCalendar.formatDate( 'end', 'Y-MM-DD HH:mm:ss' );
-
-                $.ajax({
-                    url:'/my-appointments/action',
-                    type:'POST',
-                    data:{
-                        title: title,
-                        start: start,
-                        end: end,
-                        type:'add'
-                    },
-                    success:function( data ){
-                        calendar.fullCalendar( 'refetchEvents' );
-                        alert( 'Event Created Successfully' );
-                    }
-
-                });
-
-            }
-        }
-    });
-});
-
-</script>
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
 
 @endsection

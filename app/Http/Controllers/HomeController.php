@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Model\User;
 use App\Models\Doctors;
 use App\Models\Appointments;
+use App\Models\Events;
 
 class HomeController extends Controller
 {
@@ -60,6 +61,9 @@ class HomeController extends Controller
             { 
                 return view( 'user.make-an-appointment', compact( 'doctors' ) );
             }
+            else{
+                abort(404);
+            }
         }
         else 
         {
@@ -69,12 +73,14 @@ class HomeController extends Controller
     }
 
     public function cancelAppointment( $appointment_id ){
-
+        $eventId = $appointment_id - 22;
+        $event = events::find( $eventId );
         $appointment = appointments::find( $appointment_id );
 
         if ( Auth::user()->usertype == 0 )
         {  
             $appointment->delete();
+            $event->delete();
             return redirect( route('my-appointments') )->with( 'message', 'Appointment cancelled successfully..!' );
         }
         else 

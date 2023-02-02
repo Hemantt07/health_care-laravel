@@ -50,26 +50,20 @@ Route::get( '/appointment/{appointment_id}', [ PageController::class, 'appointme
 
 Route::get( 'cancel/{appointment_id}',[ HomeController::class, 'cancelAppointment' ] )->name('cancel-appointment');
 
-Route::post( '/my-appointments/action',[ FullCalendarController::class, 'action' ] );
+Route::post( '/full-calender/action',[ FullCalendarController::class, 'action' ] );
 
 // Admin routes
+ 
+Route::get('admin/add_doctors', [AdminController::class,'add_view'])->name('add-view');
 
-if( Auth::id() )
-    {
-        if ( Auth::user()->usertype == 1 )
-        {  
-            Route::get('admin/add_doctors', [AdminController::class,'add_view'])->name('add-view');
+Route::post('admin/add_doctors_form', [AdminController::class,'store_doctors'])->name('add-doctors-form');
 
-            Route::post('admin/add_doctors_form', [AdminController::class,'store_doctors'])->name('add-doctors-form');
+Route::get( 'admin/doctor/{doctor_id}', [ AdminController::class, 'showDoctor' ] )->name('showdoctor');
 
-            Route::get( 'admin/doctor/{doctor_id}', [ AdminController::class, 'showDoctor' ] )->name('showdoctor');
+Route::get( 'approve/{appointment_id}',[ AdminController::class, 'approveAppointment' ] )->name('approve-appointment');
 
-            Route::get( 'approve/{appointment_id}',[ AdminController::class, 'approveAppointment' ] )->name('approve-appointment');
+Route::get( 'admin/edit-doctor-form/{doctor_id}',[ AdminController::class, 'editDoctorForm' ] )->name('edit-doctor');
 
-            Route::get( 'admin/edit-doctor-form/{doctor_id}',[ AdminController::class, 'editDoctorForm' ] )->name('edit-doctor');
+Route::get( 'delete/{doctor_id}',[ AdminController::class, 'deleteDoctor' ] )->name('delete-doctor');
 
-            Route::get( 'delete/{doctor_id}',[ AdminController::class, 'deleteDoctor' ] )->name('delete-doctor');
-
-            Route::post('edit_doctors/{doctor_id}', [AdminController::class,'editDoctor'])->name('edit-doctors-form');
-        }
-    }
+Route::post('edit_doctors/{doctor_id}', [AdminController::class,'editDoctor'])->name('edit-doctors-form');

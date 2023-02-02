@@ -72,6 +72,11 @@
             @endif
         </table>
 
+        <div class="calendar mb-5">
+            <h1 class="text-center text-primary"></h1>
+            <div id="calendar"></div>
+        </div>
+
     </div>
   </div>
 
