@@ -6,6 +6,9 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\FullCalendarController;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Appointments;
+use App\Mail\RejectionMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +22,19 @@ use Illuminate\Support\Facades\Auth;
 */
 
 // User
+
+Route::get('/send', function()
+{
+    $users = User::all();
+    $appointments = Appointments::all();
+    $validatedUsers = $appointments->filter( function(Appointments $appointments){
+        return( $appointments->status == 'Cancelled' );
+    } );
+     
+    foreach ($validatedUsers as $key => $user) {
+        Mail::to($user->email)->send(new RejectionMail([]));
+    }
+});
 
 Route::get('/', [HomeController::class,'index']);
 
