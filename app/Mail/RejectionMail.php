@@ -10,13 +10,12 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use App\Models\User;
 use App\Models\Appointments;
-use Mail;
 
 class RejectionMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $data;
+    private $data;
     /**
      * Create a new message instance.
      *
@@ -51,6 +50,6 @@ class RejectionMail extends Mailable
 
     public function build()
     {
-        return $this->view('mail.rejectionMail')->subject('Appointment Rejected');
+        return $this->from('admin@gmail.com', 'Admin')->subject('Cancellation mail')->view('mail.rejectionMail');
     }
 }

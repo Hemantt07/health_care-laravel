@@ -5,10 +5,11 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\FullCalendarController;
+use App\Http\Controllers\mailController;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Appointments;
-use App\Mail\RejectionMail;
+use App\Http\Mail\RejectionMail;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,18 +24,7 @@ use App\Mail\RejectionMail;
 
 // User
 
-Route::get('/send', function()
-{
-    $users = User::all();
-    $appointments = Appointments::all();
-    $validatedUsers = $appointments->filter( function(Appointments $appointments){
-        return( $appointments->status == 'Cancelled' );
-    } );
-     
-    foreach ($validatedUsers as $key => $user) {
-        Mail::to($user->email)->send(new RejectionMail([]));
-    }
-});
+Route::get('/send', [mailController::class,'index']);
 
 Route::get('/', [HomeController::class,'index']);
 
