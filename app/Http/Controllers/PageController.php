@@ -118,4 +118,12 @@ class PageController extends Controller
             return view( 'user.hospitals' );
         }
     }
+
+    public function profile()
+    {
+        if( Auth::id() )
+        {
+            return view( 'user.profile' );
+        }
+    }
 }

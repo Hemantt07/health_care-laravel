@@ -54,6 +54,8 @@ Route::get( '/hospitals', [ PageController::class, 'findHospitals' ] )->name('fi
 
 Route::get( '/appointment/{appointment_id}', [ PageController::class, 'appointment' ] )->name('appointment');
 
+Route::get( '/user/profile', [ PageController::class, 'profile' ] )->name('profile');
+
 Route::get( 'cancel/{appointment_id}',[ HomeController::class, 'cancelAppointment' ] )->name('cancel-appointment');
 
 Route::post( '/full-calender/action',[ FullCalendarController::class, 'action' ] );

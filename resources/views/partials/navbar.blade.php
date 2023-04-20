@@ -6,22 +6,29 @@
         </button>
         
         <div class="collapse navbar-collapse" id="navbarSupport">
+
           <ul class="navbar-nav ml-auto justify-content-around w-100">
+
             <li class="nav-item @if(Request::url() == url('').'/home' OR Request::url() == url('')) active @endif">
               <a class="nav-link" href="/">Home</a>
             </li>
+
             <li class="nav-item @if(Request::url() === url('').'/about' ) active @endif">
               <a class="nav-link" href="{{ route('about-page') }}">About Us</a>
             </li>
+
             <li class="nav-item @if(Request::url() === url('').'/doctors' ) active @endif">
               <a class="nav-link" href="{{ route('doctors') }}">Doctors</a>
             </li>
+
             <li class="nav-item @if(Request::url() === url('').'/calender' ) active @endif">
               <a class="nav-link" href="#">Find Hospitals</a>
             </li>
+
             <li class="nav-item @if(Request::url() === url('').'/make-appointment' ) active @endif">
               <a class="nav-link" href="{{ route('make-appointment') }}">Make an appointment</a>
             </li>
+
             @if (Route::has('login'))
                 @auth
             
@@ -58,7 +65,7 @@
                                         {{ __('Manage Account') }}
                                     </div>
 
-                                    <x-jet-dropdown-link href="{{ route('profile.show') }}">
+                                    <x-jet-dropdown-link href="{{ route('profile') }}">
                                         {{ __('Profile') }}
                                     </x-jet-dropdown-link>
 
@@ -87,15 +94,19 @@
             @else
             <li class="nav-item">
                 <a class="btn btn-primary ml-lg-3 mx-2" href="{{ route('login') }}">Login</a>
-            </li> 
+            </li>
+
                 @if (Route::has('register'))
+
             <li class="nav-item">
                 <a class="btn btn-primary ml-lg-3 mx-2" href="{{ route('register') }}">Register</a>
             </li>
+            
                 @endif
                 @endauth  
             @endif    
           </ul>
+
         </div> <!-- .navbar-collapse -->
       </div> <!-- .container -->
     </nav>

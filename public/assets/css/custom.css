@@ -200,3 +200,12 @@ tr:first-child > td > .fc-day-grid-event {
 .modal-dialog-centered{
     display: none;
 }
+
+.collapse {
+    visibility: visible !important;
+}
+
+form.profile {
+    max-width: 800px;
+    margin: 0 auto;
+}

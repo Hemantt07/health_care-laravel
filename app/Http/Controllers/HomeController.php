@@ -50,7 +50,6 @@ class HomeController extends Controller
             return view('user.home', compact( 'doctors' ));
         }
         
-         
     }
 
     public function make_appointment(){
