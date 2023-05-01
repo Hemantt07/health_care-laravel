@@ -75,3 +75,5 @@ Route::get( 'admin/edit-doctor-form/{doctor_id}',[ AdminController::class, 'edit
 Route::get( 'delete/{doctor_id}',[ AdminController::class, 'deleteDoctor' ] )->name('delete-doctor');
 
 Route::post('edit_doctors/{doctor_id}', [AdminController::class,'editDoctor'])->name('edit-doctors-form');
+
+

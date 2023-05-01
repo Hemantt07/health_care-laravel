@@ -209,3 +209,20 @@ form.profile {
     max-width: 800px;
     margin: 0 auto;
 }
+
+.user-profile .title {
+    font-size:25px;
+}
+
+.navbar {
+    position: sticky;
+    top: 0px;
+    z-index: 11;
+    background-color: #fff;
+    box-shadow: 0 3px 6px 0 #cfcfcf !important;
+}
+
+.user-profile .edit-button {
+    text-decoration: underline;
+    padding-right: 50px;
+}

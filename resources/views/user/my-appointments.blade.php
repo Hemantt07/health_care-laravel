@@ -37,7 +37,7 @@
 
             <tbody>
                 @php $sNo = 1 @endphp
-                @foreach( $appointments as $appointment )
+                    @foreach( $appointments as $appointment )
                 <tr>
                     <td class="col-1">{{ $sNo }}</td>
                     <td class="col-1">{{ $appointment->doctorId }}</td>
@@ -56,7 +56,7 @@
                         </a>
                     </td>
                 </tr>
-                @php  $sNo = $sNo + 1 @endphp
+                    @php  $sNo = $sNo + 1 @endphp
                 @endforeach
             </tbody>
             @endif

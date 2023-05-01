@@ -26,9 +26,13 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
+
         <div class="back-to-top"></div>
+
         <div class="min-h-screen bg-gray-100">
             <main>
+
+        @stack('res')
                 @yield('content')
             </main>
         </div>
