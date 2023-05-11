@@ -28,7 +28,7 @@
                 <input class="d-none" type="file" accept="image/*" name="file" id="formFile">
                 <label for="formFile" class="form-label upload-photo">Upload photo</label>
             </div>
-        </div>
+        </div>  
         <div class="col-9">
             <div class="form-group">
                 <label for="name">Doctor Name</label>

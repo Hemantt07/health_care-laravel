@@ -20,7 +20,4 @@ $(document).ready(function () {
         selectHelper:true,
     });
 
-    $( '.fc-day-grid-event' ).click( function(){
-        
-    } );
 });

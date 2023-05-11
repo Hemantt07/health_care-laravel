@@ -9,7 +9,7 @@
 <div class="container user-profile  mb-5 ">
 
     <div class="row justify-content-end w-100">
-        <a href="#" class="d-block edit-button mt-3">Edit</a>
+        <a href="{{ route('edit-profile') }}" class="d-block edit-button mt-3">Edit</a>
     </div>
     <div class="p-5 row">
 

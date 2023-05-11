@@ -33,13 +33,13 @@ Route::get('/home', [HomeController::class,'redirect']);
 Route::post('/appointments', [AdminController::class,'appointments'])->name('appointments');
 
 Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
+    'auth:sanctum', config('jetstream.auth_session'), 'verified'
+])->group( function () {
+
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
 });
   
 Route::get( '/about', [ PageController::class, 'about' ] )->name('about-page');
@@ -55,6 +55,10 @@ Route::get( '/hospitals', [ PageController::class, 'findHospitals' ] )->name('fi
 Route::get( '/appointment/{appointment_id}', [ PageController::class, 'appointment' ] )->name('appointment');
 
 Route::get( '/user/profile', [ PageController::class, 'profile' ] )->name('profile');
+
+Route::get( '/user/profile/edit', [ PageController::class, 'edit' ] )->name('edit-profile');
+
+Route::post( '/user/profile/edit-profile', [ PageController::class, 'update_profile' ] )->name('update-profile');
 
 Route::get( 'cancel/{appointment_id}',[ HomeController::class, 'cancelAppointment' ] )->name('cancel-appointment');
 
@@ -75,5 +79,3 @@ Route::get( 'admin/edit-doctor-form/{doctor_id}',[ AdminController::class, 'edit
 Route::get( 'delete/{doctor_id}',[ AdminController::class, 'deleteDoctor' ] )->name('delete-doctor');
 
 Route::post('edit_doctors/{doctor_id}', [AdminController::class,'editDoctor'])->name('edit-doctors-form');
-
-

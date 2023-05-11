@@ -53,7 +53,7 @@
         </div>
 
         @include('partials.doctors')
-
+      </div>
     </div>
   </div>
 

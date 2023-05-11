@@ -1,6 +1,15 @@
+:root {
+    padding: 0%;
+    margin: 0%;
+}
+
 *::selection {
-    background-color: #f8a1dbfa;
-    color: #000000;
+    background-color: #530037fa;
+    color: #fafafa;
+}
+
+* {
+    transition: all .7s !important;
 }
 
 .card-doctor .header .meta1 {
@@ -94,10 +103,10 @@ table.table.table-appointment {
     box-shadow: 0px 0px 8px 0px grey;
 }
 
-footer div p#copyright {
+footer p#copyright {
     text-align: center;
     position: relative;
-    padding: 10px 0;
+    padding: 26px 0 10px 0;
     width: 100%;
     bottom: 0;
     left: 0;
@@ -219,10 +228,39 @@ form.profile {
     top: 0px;
     z-index: 11;
     background-color: #fff;
-    box-shadow: 0 3px 6px 0 #cfcfcf !important;
 }
 
 .user-profile .edit-button {
     text-decoration: underline;
     padding-right: 50px;
+}
+
+.card-doctor .header {
+   height: 230px;
+}
+
+.card-doctor .header img {
+    width: auto;
+    height: 230px;
+    margin: auto;
+}
+
+.fc-unthemed th ,
+.fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
+    font-size: 23px;
+    padding: 10px 15px;
+}
+
+.btn-primary {
+    border-radius: 10px;
+}
+
+#copyright {
+    text-align: center;
+}
+
+#err {
+    color: red;
+    padding: 10px 15px;
+    display: block;
 }

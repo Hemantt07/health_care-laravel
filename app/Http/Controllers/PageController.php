@@ -7,6 +7,8 @@ use App\Models\Doctors;
 use App\Models\Appointments;
 use App\Models\Events;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class PageController extends Controller
 {
@@ -125,5 +127,31 @@ class PageController extends Controller
         {
             return view( 'user.profile' );
         }
+    }
+
+    public function edit()
+    {
+        if( Auth::id() )
+        {
+            return view( 'user.edit-profile' );
+        }
+    }
+
+    public function update_profile( Request $req )
+    {
+        $user = user::find(Auth::id());
+
+        // 
+        $user->forceFill([
+            'name' => $req->name,
+            'email' => $req->email,
+            'password' => Hash::make( $req->new_password ),
+            ])->save();
+
+            return redirect()->back()->with('success', 'User details updated');  
+        // } else {
+        //     return redirect()->back()->with('error', 'Wrong password ! Please Try again');  
+        // }
+
     }
 }
