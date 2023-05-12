@@ -58,7 +58,7 @@
   </div>
 
   <!-- partial -->
-  @include('partials.mobile-add')
+  
 
 <!-- partial -->
 @include('partials.footer')

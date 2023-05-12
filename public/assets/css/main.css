@@ -1,0 +1,35 @@
+@font-face {
+  font-family: "Rubik";
+  src: url(../fonts/Rubik-VariableFont_wght.ttf);
+}
+@font-face {
+  font-family: "Eurostile Extd";
+  font-style: normal;
+  font-weight: 400;
+  src: url(../fonts/Eurostile\ Extended\ Regular.ttf);
+}
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+  font-family: "Rubik" !important;
+}
+
+h1 {
+  font-weight: 400;
+  text-transform: uppercase;
+  font-family: "Rubik";
+}
+h1 span {
+  font-size: 18px;
+  font-weight: 400;
+  text-transform: lowercase;
+}
+
+.banner-section {
+  padding: 0;
+}
+.banner-section h1 {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}/*# sourceMappingURL=main.css.map */

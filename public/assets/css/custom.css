@@ -51,7 +51,7 @@
 
 .table-appointment thead{
     background-color: #2d3b38d1;
-    color: #00D9A5;
+    color: #14bef0;
 }
 
 .table-appointment thead th{
@@ -85,7 +85,7 @@
 
 div.appointment h5{
 
-    color: #00D9A5;
+    color: #14bef0;
     font-size: 20px;
 }
 
@@ -134,7 +134,7 @@ img.hov:hover{
 }
 
 form label.upload-photo {
-    background-color: #00D9A5;
+    background-color: #14bef0;
     width: 100%;
     padding: 10px;
     text-align: center;
@@ -144,7 +144,7 @@ form label.upload-photo {
 }
 
 .fc-toolbar h2 {
-    color: #00D9A5;
+    color: #14bef0;
 }
 
 .fc-icon-left-single-arrow:after {
@@ -166,7 +166,7 @@ form label.upload-photo {
 
 .fc .fc-button {
     user-select: none;
-    border: 1px solid #00D9A5;
+    border: 1px solid #14bef0;
     padding: 0 .5rem!important; 
     font-size: 1em;
     line-height: 1.5;
@@ -252,7 +252,14 @@ form.profile {
 }
 
 .btn-primary {
-    border-radius: 10px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px 0 #b4b4b4;
+}
+
+.btn-primary:hover, .btn-accent:hover, .btn-secondary:hover, .btn-success:hover, .btn-info:hover, .btn-warning:hover, .btn-danger:hover, .btn-dark:hover {
+    background-color: #14bef0;
+    color: #fff;
+    box-shadow: none;
 }
 
 #copyright {

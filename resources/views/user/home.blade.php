@@ -67,8 +67,6 @@
 
   @include('partials.doctors')
 
-  @include('user.news')
-
   @include('partials.appointment-link')
 
   @include('partials.footer')

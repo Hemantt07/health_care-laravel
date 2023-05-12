@@ -42,7 +42,7 @@
   @include('partials.appointment-link')
 
   <!-- partial -->
-  @include('partials.mobile-add')
+  
 
   <!-- partial -->
   @include('partials.footer')

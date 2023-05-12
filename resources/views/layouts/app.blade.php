@@ -21,6 +21,7 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css" />
         <link rel="stylesheet" href="{{ asset('assets/css/theme.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
   
         @livewireStyles
