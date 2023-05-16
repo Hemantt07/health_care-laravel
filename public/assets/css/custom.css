@@ -249,11 +249,16 @@ form.profile {
 .fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
     font-size: 23px;
     padding: 10px 15px;
+    text-transform: uppercase;
+}
+
+.fc .fc-toolbar > * > * {
+    text-transform: capitalize;
 }
 
 .btn-primary {
     border-radius: 4px;
-    box-shadow: 0 1px 3px 0 #b4b4b4;
+    box-shadow: 0 2px 3px 0px #525252;
 }
 
 .btn-primary:hover, .btn-accent:hover, .btn-secondary:hover, .btn-success:hover, .btn-info:hover, .btn-warning:hover, .btn-danger:hover, .btn-dark:hover {
@@ -271,3 +276,48 @@ form.profile {
     padding: 10px 15px;
     display: block;
 }
+
+#map {
+    height: 300px;
+    margin: auto;
+    box-shadow: 0 1px 5px 0 #b2b2b2;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #d8d8d8;
+    outline: 0;
+    box-shadow: 0 2px 3px 0.2rem rgb(174 174 174 / 20%);
+}
+
+
+.custom-map-control-button {
+    background-color: #fff;
+    border: 0;
+    border-radius: 2px;
+    box-shadow: 0 1px 4px -1px rgba(0, 0, 0, 0.3);
+    margin: 10px;
+    padding: 0 0.5em;
+    font: 400 18px Roboto, Arial, sans-serif;
+    overflow: hidden;
+    height: 40px;
+    cursor: pointer;
+  }
+  .custom-map-control-button:hover {
+    background: rgb(235, 235, 235);
+  }
+
+  #current {
+    background-color: #2D3B38;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-size: 34px;
+    width: 40px;
+    height: 40px;
+    border-radius: 100px;
+    line-height: 0;
+    margin: auto;
+  }

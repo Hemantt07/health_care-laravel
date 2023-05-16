@@ -58,6 +58,8 @@ Route::get( '/user/profile', [ PageController::class, 'profile' ] )->name('profi
 
 Route::get( '/user/profile/edit', [ PageController::class, 'edit' ] )->name('edit-profile');
 
+Route::get( '/find-hospitals', [ PageController::class, 'find_hospitals' ] )->name('find_hospitals');
+
 Route::post( '/user/profile/edit-profile', [ PageController::class, 'update_profile' ] )->name('update-profile');
 
 Route::get( 'cancel/{appointment_id}',[ HomeController::class, 'cancelAppointment' ] )->name('cancel-appointment');

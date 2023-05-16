@@ -21,8 +21,8 @@
               <a class="nav-link" href="{{ route('doctors') }}">Doctors</a>
             </li>
 
-            <li class="nav-item @if(Request::url() === url('').'/calender' ) active @endif">
-              <a class="nav-link" href="#">Find Hospitals</a>
+            <li class="nav-item @if(Request::url() === url('').'/find-hospitals' ) active @endif">
+              <a class="nav-link" href="{{ route('find_hospitals') }}">Find Hospitals</a>
             </li>
 
             <li class="nav-item @if(Request::url() === url('').'/make-appointment' ) active @endif">

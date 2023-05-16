@@ -141,17 +141,17 @@ class PageController extends Controller
     {
         $user = user::find(Auth::id());
 
-        // 
         $user->forceFill([
             'name' => $req->name,
             'email' => $req->email,
             'password' => Hash::make( $req->new_password ),
             ])->save();
 
-            return redirect()->back()->with('success', 'User details updated');  
-        // } else {
-        //     return redirect()->back()->with('error', 'Wrong password ! Please Try again');  
-        // }
+        return redirect()->back()->with('success', 'User details updated');  
+    }
 
+    public function find_hospitals()
+    {
+        return view('user.find-hospitals');
     }
 }
