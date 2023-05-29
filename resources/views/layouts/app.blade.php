@@ -49,7 +49,7 @@
         <script src="{{ asset('assets/vendor/wow/wow.min.js') }}"></script>
         <script src="{{ asset('assets/js/theme.js') }}"></script>
         {{-- Google map API --}}
-        <script async src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places"></script>
+        <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDfRYuNSZdjSasswlsYBxAKgwveIdk4Z6I&libraries=places"></script>
         <script src="{{ asset('assets/js/custom.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
