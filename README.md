@@ -1,3 +1,22 @@
+# Getting Started with Laravel App
+
+This project idea has been driven from https://youtu.be/Hh1atKEzNWs
+I have added some changes to it
+
+#### 1. I have used Bootstrap5
+#### 2. Also i have changed the design and functionalitiess.
+#### 3. I have added *Simple Calendar* *G Maps*
+
+![health-care](https://github.com/Hemantt07/Laravel/assets/118185650/4d4b7a78-740d-4327-9e28-c7cd332e61e7)
+
+# Used Scripts 
+Runs the app in the development mode.
+Open http://localhost:3000 to view it in the browser.
+
+# Learn React JS
+You can learn react from https://facebook.github.io/create-react-app/docs/getting-started
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
