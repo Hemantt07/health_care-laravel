@@ -39,7 +39,7 @@ class rejectionMail extends Command
 
         foreach ($validatedUsers as $key => $value) {
             echo( $value->user );
-            Mail::to($user->email)->send(new RejectionMail($data));
+            Mail::to($user->email)->send(new RejectionMail( $data ));
         }
     }
 }

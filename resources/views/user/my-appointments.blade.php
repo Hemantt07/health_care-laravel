@@ -3,8 +3,6 @@
 @section('content')
 
     <!-- partials -->
-  
-
   @include('partials.navbar')
 
   <div class="container mt-5">
@@ -81,10 +79,12 @@
                 ...
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Understood</button>
             </div>
         </div>
     </div>
+
+    @include('partials.modal.event-modal')
 
 @endsection

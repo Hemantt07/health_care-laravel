@@ -13,145 +13,125 @@ use Illuminate\Support\Facades\Hash;
 class PageController extends Controller
 {
     // about
-    public function about(){
-
+    public function about()
+    {
         $doctors = doctors::all();
-        return view( 'user.about', compact( 'doctors' ) );
-        
+        return view("user.about", compact("doctors"));
     }
 
     // doctors
-    public function doctors(){
+    public function doctors()
+    {
         $doctors = doctors::all();
 
-        if( Auth::id() ){
-
-            if ( Auth::user()->usertype == 0 )
-            {  
-                return view( 'user.doctors', compact( 'doctors' ) );
+        if (Auth::id()) {
+            if (Auth::user()->usertype == 0) {
+                return view("user.doctors", compact("doctors"));
+            } else {
+                return view("admin.doctors", compact("doctors"));
             }
-            else
-            {
-                return view( 'admin.doctors', compact( 'doctors' ) );
-            }
+        } else {
+            return view("user.doctors", compact("doctors"));
         }
-        else
-        {
-            return view( 'user.doctors', compact( 'doctors' ) );
-        }
-
-
     }
 
     // myAppointments
-    public function myAppointments(Request $req){
-
-        if( Auth::id() ){
-
-            if ( Auth::user()->usertype == 0 )
-            {  
+    public function myAppointments(Request $request)
+    {
+        if (Auth::id()) {
+            
+            if (Auth::user()->usertype == 0) {
                 $userID = Auth::user()->id;
-                if ( $req->ajax() ) {
-
-                    $data = events::whereDate( 'start', '>=', $req->start )
-                                    ->whereDate( 'end', '<=', $req->end )
-                                    ->where( 'userID', $userID )
-                                    ->get([ 'id', 'title', 'start', 'end' ]);
+                if ($request->ajax()) {
+                    $data = events::whereDate("date", ">=", $request->start)
+                        ->where("userId", $userID)
+                        ->get(["id", "title", "date"]);
                     return response()->json($data);
                 }
-                
 
-                $appointments = appointments::where( 'userId', $userID )->get();            
-    
-                return view( 'user.my-appointments', compact( 'appointments' ) );
-            }
-            else
-            {
-                if ( $req->ajax() ) {
+                $appointments = appointments::where("userId", $userID)->get();
 
-                    $data = events::whereDate( 'start', '>=', $req->start )
-                                    ->whereDate( 'end', '<=', $req->end )
-                                    ->get([ 'id', 'title', 'start', 'end' ]);
+                return view("user.my-appointments", compact("appointments"));
+            } else {
+                if ($request->ajax()) {
+                    $data = events::whereDate("date", ">=", $request->start)
+                        ->get(["id", "title", "date"]);
                     return response()->json($data);
                 }
                 $appointments = appointments::all();
-                return view( 'admin.appointments', compact( 'appointments' ) );
+                return view("admin.appointments", compact("appointments"));
             }
-
-
-        }
-        else{
+        } else {
             return redirect()->back();
         }
-
     }
 
     // appointment
-    public function appointment( $appointment_id )
+    public function appointment($appointment_id)
     {
-        if( Auth::id() )
-        {
-            if ( Auth::user()->usertype == 0 )
-            {  
-                $appointment = appointments::where( 'id', $appointment_id )->get();
+        if (Auth::id()) {
+            if (Auth::user()->usertype == 0) {
+                $appointment = appointments::where(
+                    "id",
+                    $appointment_id
+                )->get();
 
-                return view( 'user.appointment', compact( 'appointment' ) );
-            }
-            else
-            {
-                $appointment = appointments::where( 'id', $appointment_id )->get();
+                return view("user.appointment", compact("appointment"));
+            } else {
+                $appointment = appointments::where(
+                    "id",
+                    $appointment_id
+                )->get();
 
-                return view( 'admin.appointment', compact( 'appointment' ) );
+                return view("admin.appointment", compact("appointment"));
             }
         }
     }
 
     public function findHospitals()
     {
-        if( Auth::id() )
-        {
-            if ( Auth::user()->usertype == 0 )
-            {  
-                return view( 'user.hospitals' );
+        if (Auth::id()) {
+            if (Auth::user()->usertype == 0) {
+                return view("user.hospitals");
             }
-        }
-        else 
-        {
-            return view( 'user.hospitals' );
+        } else {
+            return view("user.hospitals");
         }
     }
 
     public function profile()
     {
-        if( Auth::id() )
-        {
-            return view( 'user.profile' );
+        if (Auth::id()) {
+            return view("user.profile");
         }
     }
 
     public function edit()
     {
-        if( Auth::id() )
-        {
-            return view( 'user.edit-profile' );
+        if (Auth::id()) {
+            return view("user.edit-profile");
         }
     }
 
-    public function update_profile( Request $req )
+    public function update_profile(Request $req)
     {
         $user = user::find(Auth::id());
 
-        $user->forceFill([
-            'name' => $req->name,
-            'email' => $req->email,
-            'password' => Hash::make( $req->new_password ),
-            ])->save();
+        $user
+            ->forceFill([
+                "name" => $req->name,
+                "email" => $req->email,
+                "password" => Hash::make($req->new_password),
+            ])
+            ->save();
 
-        return redirect()->back()->with('success', 'User details updated');  
+        return redirect()
+            ->back()
+            ->with("success", "User details updated");
     }
 
     public function find_hospitals()
     {
-        return view('user.find-hospitals');
+        return view("user.find-hospitals");
     }
 }

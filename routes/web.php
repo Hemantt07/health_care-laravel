@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\FullCalendarController;
 use App\Http\Controllers\mailController;
@@ -30,39 +31,40 @@ Route::get('/', [HomeController::class,'index']);
 
 Route::get('/home', [HomeController::class,'redirect']);
 
-Route::post('/appointments', [AdminController::class,'appointments'])->name('appointments');
 
 Route::middleware([
     'auth:sanctum', config('jetstream.auth_session'), 'verified'
 ])->group( function () {
-
+    
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
 });
-  
-Route::get( '/about', [ PageController::class, 'about' ] )->name('about-page');
 
-Route::get('/make-appointment', [HomeController::class,'make_appointment'])->name('make-appointment');
+// Appointments
+
+Route::post( '/appointments', [AppointmentController::class,'appointments'])->name('appointments');
+Route::get( '/make-appointment', [AppointmentController::class,'make_appointment'])->name('make-appointment');
+Route::get( '/my-appointments', [ PageController::class, 'myAppointments' ] )->name('my-appointments');
+Route::get( '/appointment/{appointment_id}', [ PageController::class, 'appointment' ] )->name('appointment');
+Route::get( 'cancel/{appointment_id}',[ AppointmentController::class, 'cancelAppointment' ] )->name('cancel-appointment');
+Route::get( 'create-appointment-modal',[ AppointmentController::class, 'appointmentModal' ] )->name('create-appointment-modal');
+
+Route::get( '/about', [ PageController::class, 'about' ] )->name('about-page');
 
 Route::get( '/doctors', [ PageController::class, 'doctors' ] )->name('doctors');
 
-Route::get( '/my-appointments', [ PageController::class, 'myAppointments' ] )->name('my-appointments');
+
 
 Route::get( '/hospitals', [ PageController::class, 'findHospitals' ] )->name('find-hospitals');
-
-Route::get( '/appointment/{appointment_id}', [ PageController::class, 'appointment' ] )->name('appointment');
 
 Route::get( '/user/profile', [ PageController::class, 'profile' ] )->name('profile');
 
 Route::get( '/user/profile/edit', [ PageController::class, 'edit' ] )->name('edit-profile');
 
-Route::get( '/find-hospitals', [ PageController::class, 'find_hospitals' ] )->name('find_hospitals');
-
 Route::post( '/user/profile/edit-profile', [ PageController::class, 'update_profile' ] )->name('update-profile');
 
-Route::get( 'cancel/{appointment_id}',[ HomeController::class, 'cancelAppointment' ] )->name('cancel-appointment');
 
 Route::post( '/full-calender/action',[ FullCalendarController::class, 'action' ] );
 

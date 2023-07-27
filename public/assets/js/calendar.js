@@ -7,7 +7,7 @@ $(document).ready(function () {
         }
     });
 
-    var calendar = $('#calendar').fullCalendar({
+    $('#calendar').fullCalendar({
         editable: true,
         timeZone: "UTC",
         header:{
@@ -18,6 +18,30 @@ $(document).ready(function () {
         events:'/my-appointments',
         selectable:true,
         selectHelper:true,
+        timeZone: "UTC",
+        allDaySlot: false,
+        showNonCurrentDates: false,
+        dayCellContent: function (info, create) {
+            const element = create(
+                "span",
+                { id: "fc-day-span-" + info.date.getDOY(), class: "day" },
+                info.dayNumberText
+            );
+            return element;
+        },
+        eventClick: function ( info ) {
+            console.log( info.id );
+            let url;
+            url = route("create-appointment-modal");
+            $.ajax({
+                url: url,
+                success: function(result){
+                    $("#div1").html(result);
+                }
+            });
+            $('#eventModal').modal( 'show' );
+        }
+
     });
 
 });

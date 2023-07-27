@@ -4,12 +4,18 @@
 }
 
 *::selection {
-    background-color: #530037fa;
+    background-color: #14bef0;
     color: #fafafa;
 }
 
-* {
-    transition: all .7s !important;
+.navbar-brand {
+    font-size: 2rem;
+}
+
+.navbar-expand-lg .navbar-nav .nav-link {
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #696969;
 }
 
 .card-doctor .header .meta1 {
@@ -55,8 +61,10 @@
 }
 
 .table-appointment thead th{
-    font-weight: 100;
+    font-weight: 500;
+    font-size: 1.2rem;
 }
+
 
 .table-appointment td ,.table-appointment th{
     text-align: center;
@@ -226,7 +234,7 @@ form.profile {
 .navbar {
     position: sticky;
     top: 0px;
-    z-index: 11;
+    z-index: 12;
     background-color: #fff;
 }
 
@@ -247,7 +255,7 @@ form.profile {
 
 .fc-unthemed th ,
 .fc-ltr .fc-basic-view .fc-day-top .fc-day-number {
-    font-size: 23px;
+    font-size: 17px;
     padding: 10px 15px;
     text-transform: uppercase;
 }
@@ -258,13 +266,22 @@ form.profile {
 
 .btn-primary {
     border-radius: 4px;
-    box-shadow: 0 2px 3px 0px #525252;
+    box-shadow: 0 2px 3px 0px #52525242;
 }
 
 .btn-primary:hover, .btn-accent:hover, .btn-secondary:hover, .btn-success:hover, .btn-info:hover, .btn-warning:hover, .btn-danger:hover, .btn-dark:hover {
     background-color: #14bef0;
     color: #fff;
     box-shadow: none;
+}
+
+.navbar-nav button {
+    font-size: 1.2rem;
+    font-family: 'Raleway', sans-serif !important;
+}
+
+.fc-day-grid-event .fc-time {
+    display: none;
 }
 
 #copyright {
@@ -283,6 +300,7 @@ form.profile {
     box-shadow: 0 1px 5px 0 #b2b2b2;
 }
 
+.custom-select:focus,
 .form-control:focus {
     color: #495057;
     background-color: #fff;
@@ -290,7 +308,6 @@ form.profile {
     outline: 0;
     box-shadow: 0 2px 3px 0.2rem rgb(174 174 174 / 20%);
 }
-
 
 .custom-map-control-button {
     background-color: #fff;
@@ -303,12 +320,12 @@ form.profile {
     overflow: hidden;
     height: 40px;
     cursor: pointer;
-  }
-  .custom-map-control-button:hover {
+}
+.custom-map-control-button:hover {
     background: rgb(235, 235, 235);
-  }
+}
 
-  #current {
+#current {
     background-color: #2D3B38;
     display: flex;
     justify-content: center;
@@ -320,4 +337,19 @@ form.profile {
     border-radius: 100px;
     line-height: 0;
     margin: auto;
-  }
+}
+
+.fc-content {
+    padding: 3px;
+    top: -1px;
+    font-weight: 500;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+   margin: 0;
+}
+input[type=number] {
+  -moz-appearance: textfield;
+}

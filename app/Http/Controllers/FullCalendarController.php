@@ -14,8 +14,7 @@ class FullCalendarController extends Controller
             if ( $req->type == 'add' ) {
                 $event = Event::create([
                     'title'     => $req->title,
-                    'start'     => $req->start,
-                    'end'       => $req->end
+                    'date'     => $req->date,
                 ]);
 
                 return response()->json( $event );
