@@ -30,11 +30,9 @@ $(document).ready(function () {
             return element;
         },
         eventClick: function ( info ) {
-            console.log( info.id );
-            let url;
-            url = route("create-appointment-modal");
+            $event_id = info.id;
             $.ajax({
-                url: url,
+                url: route("create-appointment-modal", [ $event_id ]),
                 success: function(result){
                     $("#div1").html(result);
                 }

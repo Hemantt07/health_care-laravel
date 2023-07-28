@@ -70,7 +70,6 @@ class AppointmentController extends Controller
         } else {
             return redirect()->back()->with( 'message', 'Please login to make an appointment' );
         }
-
     }
 
     public function approveAppointment( $id ){   
@@ -82,6 +81,7 @@ class AppointmentController extends Controller
     }
 
     public function appointmentModal( $event_id ){
-        dd( $event_id );
+        $event = Events::find( $event_id );
+        dd( $event );
     }
 }
