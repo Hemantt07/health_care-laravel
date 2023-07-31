@@ -9,15 +9,16 @@
         <div class="item">
           <div class="card-doctor">
             <div class="header">
-              <img src="../doctorsimages/<?= $doctor->image ?>" alt="">
+              <img src="../doctorsimages/{{ $doctor->image }}" alt="">
               <div class="meta">
-                <a href="<?= $doctor->phone ?>"><span class="mai-call"></span></a>
-                <a href="#"><span class="mai-logo-whatsapp"></span></a>
+                <a href="{{ $doctor->phone }}"><span class="mai-call"></span></a>
+                <a href="https://wa.me/+91{{ $doctor->phone }}?text=Hi,
+Can we please have a chat." target="__blank"><span class="mai-logo-whatsapp"></span></a>
               </div>
             </div>
             <div class="body">
-              <p class="text-xl mb-0">Dr. <?= $doctor->name ?></p>
-              <span class="text-sm text-grey"><?= $doctor->speciality ?></span>
+              <p class="text-xl mb-0">Dr. {{ $doctor->name }}</p>
+              <span class="text-sm text-grey">{{ $doctor->speciality }}</span>
             </div>
           </div>
         </div>
@@ -25,4 +26,4 @@
 
       </div>
     </div>
-  </div>
+</div>

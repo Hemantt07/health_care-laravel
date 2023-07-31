@@ -16,6 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('rejectionMail')->hourly();
+        $schedule->command('events:delete-expired')->daily();
     }
 
     /**

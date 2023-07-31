@@ -37,8 +37,8 @@
                 <x-jet-label for="user_type" value="{{ __('Usertype') }}" />
                 <select id="user_type"  class="block mt-1 w-full shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md" name="user_type">
 
-                    <option value="0">User</option>
-                    <option value="2">Doctor</option>
+                    <option value=0>User</option>
+                    <option value=2>Doctor</option>
     
                 </select>
             </div>

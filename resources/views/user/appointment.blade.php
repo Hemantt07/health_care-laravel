@@ -16,7 +16,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4"><h5>Date</h5></div>
-                <div class="col-8">{{ date_format( date_create($appointment->first()->date),"d M Y") }}</div>
+                <div class="col-8">{{ date_format( date_create($appointment->first()->date),"jS F Y") }}</div>
             </div>
             <div class="row mb-3">
                 <div class="col-4"><h5>Message</h5></div>
@@ -24,7 +24,7 @@
             </div>
             <div class="row mb-3">
                 <div class="col-4"><h5>Date Requested</h5></div>
-                <div class="col-8">{{ date_format( $appointment->first()->created_at,"d M Y") }}</div>
+                <div class="col-8">{{ date_format( $appointment->first()->created_at,"jS F Y") }}</div>
             </div>
             <div class="row mt-5">
                 <a href="{{ route('cancel-appointment', ['appointment_id' => $appointment->first()->id] ) }}" class="d-block mx-auto btn btn-primary mt-3 wow zoomIn">Cancel appointment</a>

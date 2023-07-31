@@ -934,7 +934,7 @@ a.text-dark:hover, a.text-dark:focus {
 .navbar-light .navbar-nav .active > .nav-link,
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .nav-link.active {
-  font-weight: 600;
+  font-weight: 500;
   color: #14bef0;
 }
 
@@ -1183,7 +1183,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .page-section {
   position: relative;
-  padding-top: 80px;
+  padding-top: 30px;
   padding-bottom: 80px;
   overflow: hidden;
 }
@@ -1212,9 +1212,10 @@ a.text-dark:hover, a.text-dark:focus {
   z-index: 1;
 }
 
-.page-banner .breadcrumb-item,
+.page-banner .breadcrumb-item, 
 .page-banner .breadcrumb-item a {
-  font-size: 14px;
+  font-size: 17px;
+  font-weight: 700;
 }
 
 .hero-section,

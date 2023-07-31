@@ -32,7 +32,7 @@
                 <a class="nav-link" href="{{ route('my-appointments') }}">My appointments</a>
             </li>
 
-            <div class="hidden sm:block d-flex border rounded">
+            <div class="nav-link text-primary hidden sm:block d-flex">
                 <div class="hidden sm:flex sm:items-center">
                     <!-- Settings Dropdown -->
                     <div class="relative">
@@ -44,7 +44,7 @@
                                     </button>
                                 @else
                                     <span class="inline-flex rounded-md">
-                                        <button type="button" class="inline-flex items-center px-3 py-2 leading-4 rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
+                                        <button type="button" class="inline-flex items-center p-0 text-primary bg-white hover:text-gray-700 focus:outline-none focus:bg-gray-50 active:bg-gray-50 transition">
                                             {{ Auth::user()->name }}
 
                                             <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
@@ -90,13 +90,13 @@
 
             @else
             <li class="nav-item">
-                <a class="btn btn-primary ml-lg-3 mx-2" href="{{ route('login') }}">Login</a>
+                <a class="nav-link text-primary" href="{{ route('login') }}">Login</a>
             </li>
 
                 @if (Route::has('register'))
 
             <li class="nav-item">
-                <a class="btn btn-primary ml-lg-3 mx-2" href="{{ route('register') }}">Register</a>
+                <a class="nav-link text-primary" href="{{ route('register') }}">Register</a>
             </li>
             
                 @endif

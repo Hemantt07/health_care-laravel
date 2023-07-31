@@ -26,9 +26,8 @@ class AppointmentController extends Controller
     }
 
     public function cancelAppointment( $appointment_id ){
-        $eventId = $appointment_id - 22;
-        $event = events::find( $eventId );
-        $appointment = appointments::find( $appointment_id );
+        $event =  Events::where('appointmentId', $appointment_id)->first();
+        $appointment = Appointments::find( $appointment_id );
 
         if ( Auth::user()->usertype == 0 ){  
             $appointment->delete();
@@ -39,7 +38,7 @@ class AppointmentController extends Controller
             $appointment->save();
             return redirect( route('my-appointments') )->with( 'message', 'Appointment cancelled successfully..!' );
         }
-    } 
+    }
 
     public function appointments( Request $request ){
 
@@ -82,6 +81,19 @@ class AppointmentController extends Controller
 
     public function appointmentModal( $event_id ){
         $event = Events::find( $event_id );
-        dd( $event );
+        $appointment = Appointments::find( $event->appointmentId );
+        $dateTime = new \DateTime( $appointment->date );
+        $date = $dateTime->format('jS F Y');
+        $doctorName = $appointment->doctorId;
+        $doctorNumber = $appointment->phone;
+        $viewUrl = url('appointment', ['appointment_id' => $appointment->id] );
+        $data = [
+            'date' => $date,
+            'doctorName' => $doctorName,
+            'doctorNumber' => $doctorNumber,
+            'url' => $viewUrl
+        ];
+
+        return $data;
     }
 }

@@ -23,6 +23,8 @@
         <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
+        <!-- jQuery UI library (includes the datepicker widget) -->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
   
         @livewireStyles
     </head>
@@ -32,11 +34,10 @@
 
         <div class="min-h-screen bg-gray-100">
             <main>
-
-        @stack('res')
+                @stack('res')
                 @yield('content')
             </main>
-        </div>
+        </div><!-- main close -->
 
         @stack('modals')
         @routes
@@ -50,6 +51,7 @@
         <script src="{{ asset('assets/js/custom.js') }}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
         
         <script src="{{ asset('assets/js/calendar.js') }}"></script>
 

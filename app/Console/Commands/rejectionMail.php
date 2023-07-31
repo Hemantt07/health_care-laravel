@@ -33,13 +33,14 @@ class rejectionMail extends Command
     public function handle()
     {
         $appointments = Appointments::all();
-        $validatedUsers = $appointments->filter( function(Appointments $appointments){
-            return( $appointments->status == 'Cancelled' );
-        } );
+        $validatedAppointments = $appointments->where( $appointments->status === 'Cancelled' );
 
-        foreach ($validatedUsers as $key => $value) {
-            echo( $value->user );
-            Mail::to($user->email)->send(new RejectionMail( $data ));
+        foreach ($validatedAppointments as $key => $value) {
+            foreach ($appointments as $appointment) {
+                Mail::to($appointment->email)->queue(new RejectionMail($data));
+            }
+        
+            $this->info('Rejection emails sent successfully.');
         }
     }
 }

@@ -22,8 +22,11 @@
             <div class="header">
               <img src="../doctorsimages/{{ $doctor->image }}" alt="">
               <div class="meta">
-                <a href="{{ $doctor->phone }}"><span class="mai-call"></span></a>
-                <a href="#"><span class="mai-logo-whatsapp"></span></a>
+                <a href="tel:{{ $doctor->phone }}"><span class="mai-call"></span></a>
+                <a href="https://wa.me/+91{{ $doctor->phone }}?text=Hi,
+Can we please have a chat."  target="__blank">
+                  <span class="mai-logo-whatsapp"></span>
+                </a>
               </div>
             </div>
             <div class="body">

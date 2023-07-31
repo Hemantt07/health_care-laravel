@@ -49,7 +49,7 @@ Route::get( '/make-appointment', [AppointmentController::class,'make_appointment
 Route::get( '/my-appointments', [ PageController::class, 'myAppointments' ] )->name('my-appointments');
 Route::get( '/appointment/{appointment_id}', [ PageController::class, 'appointment' ] )->name('appointment');
 Route::get( 'cancel/{appointment_id}',[ AppointmentController::class, 'cancelAppointment' ] )->name('cancel-appointment');
-Route::get( 'create-appointment-modal',[ AppointmentController::class, 'appointmentModal' ] )->name('create-appointment-modal');
+Route::get( 'create-appointment-modal/{event_id}',[ AppointmentController::class, 'appointmentModal' ] )->name('create-appointment-modal');
 
 Route::get( '/about', [ PageController::class, 'about' ] )->name('about-page');
 

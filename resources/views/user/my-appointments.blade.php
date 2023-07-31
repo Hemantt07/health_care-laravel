@@ -25,12 +25,14 @@
                 </tr>
             @else
             <thead>
-                <th>Serial No.</th>
-                <th>Doctor Name</th>
-                <th>Date</th>
-                <th>Status</th>
-                <th>View</th>
-                <th>Cancel Appointment</th>
+                <tr >
+                    <th class="col-1">Serial No.</th>
+                    <th class="col-1">Doctor Name</th>
+                    <th class="col-2">Date</th>
+                    <th class="col-1">Status</th>
+                    <th class="col-1">View</th>
+                    <th class="col-1">Cancel Appointment</th>
+                </tr>
             </thead>
 
             <tbody>
@@ -39,8 +41,8 @@
                 <tr>
                     <td class="col-1">{{ $sNo }}</td>
                     <td class="col-1">{{ $appointment->doctorId }}</td>
-                    <td class="col-1">{{ $appointment->date }}</td>
-                    <td class="col-2 @if($appointment->status == 'Approved') text-success @elseif($appointment->status == 'Cancelled') text-danger @else text-primary @endif">
+                    <td class="col-2">{{ date_format( date_create($appointment->date),"jS F Y") }}</td>
+                    <td class="col-1 @if($appointment->status == 'Approved') text-success @elseif($appointment->status == 'Cancelled') text-danger @else text-primary @endif">
                         <b>{{ $appointment->status }}</b>
                     </td>
                     <td class="col-1">
@@ -69,22 +71,7 @@
   </div>
 
   @include('partials.footer')  
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                ...
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Understood</button>
-            </div>
-        </div>
-    </div>
 
-    @include('partials.modal.event-modal')
+@include('partials.modal.event-modal')
 
 @endsection

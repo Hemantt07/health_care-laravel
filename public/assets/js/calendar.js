@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
 
     $.ajaxSetup({
@@ -34,12 +33,18 @@ $(document).ready(function () {
             $.ajax({
                 url: route("create-appointment-modal", [ $event_id ]),
                 success: function(result){
-                    $("#div1").html(result);
+                    console.log(result)
+                    var html = parseModalContent( result );
+                    $( '#eventModal .modal-content' ).html( html )
+                    $('#eventModal').modal( 'show' );
                 }
             });
-            $('#eventModal').modal( 'show' );
         }
 
     });
+
+    const parseModalContent = ( content) => {
+        return "<div class=modal-header><h5 class=modal-title id=exampleModalLabel>Appointment Details</h5><button type=button class=close data-dismiss=modal aria-label=Close><span aria-hidden=true>×</span></button></div><div class=modal-body><ul><li><b>Date : </b>"+ content.date +"</li><li><b>Doctor's Name : </b>"+ content.doctorName +"</li><li><b>Doctor's Number : </b><a href='tel:"+ content.doctorNumber +"'>"+ content.doctorNumber +"</a></li></ul></div><div class=modal-footer><button type=button class='btn btn-primary' data-dismiss=modal>Close</button><a type=button class='btn btn-primary' href="+ content.url +">View</a></div>"
+    }
 
 });

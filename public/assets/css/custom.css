@@ -248,9 +248,9 @@ form.profile {
 }
 
 .card-doctor .header img {
-    width: auto;
-    height: 230px;
-    margin: auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .fc-unthemed th ,
@@ -352,4 +352,9 @@ input::-webkit-inner-spin-button {
 }
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+a:hover {
+    color: #03a882;
+    text-decoration: none;
 }

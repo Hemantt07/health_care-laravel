@@ -50,6 +50,6 @@ class RejectionMail extends Mailable
 
     public function build()
     {
-        return $this->from('admin@gmail.com', 'Admin')->subject('Cancellation mail')->view('mail.rejectionMail');
+        return $this->from('reshavdhiman67@gmail.com', 'Admin')->subject('Cancellation mail')->view('mail.rejectionMail');
     }
 }
