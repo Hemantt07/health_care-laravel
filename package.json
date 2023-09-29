@@ -22,6 +22,7 @@
         "vite": "^4.4.7"
     },
     "dependencies": {
+        "caniuse-lite": "^1.0.30001525",
         "fullcalendar": "^6.1.1",
         "watch": "^0.13.0"
     }
